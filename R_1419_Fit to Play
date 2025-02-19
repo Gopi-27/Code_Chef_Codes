@@ -1,3 +1,7 @@
+
+// Read the problem Description https://www.codechef.com/practice/course/2-star-difficulty-problems/DIFF1500/problems/PLAYFIT
+
+
 #include <stdio.h>
 void GettingMaxScr(int *A,int start,int mid,int end ,int *maxscr){
     int p1min=A[start];
