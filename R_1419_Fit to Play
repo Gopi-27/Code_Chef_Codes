@@ -1,0 +1,54 @@
+#include <stdio.h>
+void GettingMaxScr(int *A,int start,int mid,int end ,int *maxscr){
+    int p1min=A[start];
+    int p2max=A[mid+1];
+    for(int i=start+1; i<=mid; i++){
+        if(p1min>A[i]){
+            p1min=A[i];
+        }
+    }
+    for(int i=mid+1+1; i<=end; i++){
+        if(p2max<A[i]){
+            p2max=A[i];
+        }
+    }
+    int dif=p2max-p1min;
+    if(dif>(*maxscr)){
+        (*maxscr)=dif;
+    }
+    return ;
+}
+void DivideConquer(int *A,int start,int end,int *maxscr){
+    if(start>=end){
+        return ;
+    }
+    int mid=(start+end)/2;
+    DivideConquer(A,start,mid,maxscr);
+    DivideConquer(A,mid+1,end,maxscr);
+    GettingMaxScr(A,start,mid,end,maxscr);
+    return ;
+}
+
+
+int main() {
+	// your code goes here
+	int t;
+	scanf("%d",&t);
+	while(t--){
+	    int n;
+	    scanf("%d",&n);
+	    int arr[n];
+	    for(int i=0; i<n; i++){
+	        scanf("%d",&arr[i]);
+	    }
+	    int maxscr=0;
+	    DivideConquer(arr,0,n-1,&maxscr);
+	    if(maxscr==0){
+	        printf("UNFIT\n");
+	    }else{
+	        printf("%d\n",maxscr);
+	    }
+	}
+
+}
+
